@@ -1,6 +1,6 @@
-﻿
+
 # Fonction principale
-def fonct_J(date):
+def fonct_J(li_date):
     # Liste des jours de la semaine
     jours_semaines = ["Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
 
@@ -10,11 +10,12 @@ def fonct_J(date):
     try:
         # On découpe la chaîne( en format "jj/mm/aaaa")
         # Chaque partie (jour, mois, année) est convertie en nombre entier
-        parties = date.split('/') # Découpe la chaîne en trois parties : "jj", "mm", "aaaa"
-        jour = int(parties[0]) # Convertit le jour en entier
-        mois = int(parties[1]) #    //      le mois   //
-        annee = int(parties[2]) #    //     l'année    //
-    except ValueError: # empeche valeur pas = nombre
+        for date in li_dates:
+            parties = date.split('/') # Découpe la chaîne en trois parties : "jj", "mm", "aaaa"
+            jour = int(parties[0]) # Convertit le jour en entier
+            mois = int(parties[1]) #    //      le mois   //
+            annee = int(parties[2]) #    //     l'année    //
+        except ValueError: # empeche valeur pas = nombre
         return "c'est écrit dans un format incorrect. Entrez la date sous la forme jj/mm/aaaa."
 
     # Vérifications de base
