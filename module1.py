@@ -1,6 +1,6 @@
 
 # Fonction principale
-def fonct_J(li_date):
+def fonct_J(li_dates):
     # Liste des jours de la semaine
     jours_semaines = ["Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
 
