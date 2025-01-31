@@ -33,6 +33,8 @@ def fonct_J(li_dates):
     # Vérifie si l'année est bissextile
     bissextile = annee % 4 == 0 and  annee % 400 == 0
 
+
+
     # Vérifie le nombre de jours dans le mois
     jours_max = jours_par_mois[mois - 1]
     if mois == 2 and bissextile:
@@ -40,8 +42,12 @@ def fonct_J(li_dates):
     if jour > jours_max:
         return "Le mois {mois} de l'année {annee} n'a que {jours_max} jours."
 
+
+
     # Calcul du nombre total de jours écoulés depuis le 1er janvier 2000
     jours_totaux = 0
+
+
 
     # Ajouter les jours des années complètes entre 2000 et l'année précédente
     for i in range(2000, annee):
@@ -57,10 +63,15 @@ def fonct_J(li_dates):
         if m == 1 and bissextile:
             jours_totaux += 1
 
+
+
+
     # Ajouter les jours du mois en cours
     jours_totaux += jour - 1
 
     # Trouver le jour de la semaine correspondant
     index_jour = (jours_totaux + 6) % 7 # +6 car 1er janvier 2000 était un samedi
+
+
     return jours_semaines[index_jour]
 
