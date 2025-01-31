@@ -29,7 +29,7 @@ def fonct_J(li_dates):
     if mois == 2 and bissextile:
         jours_max = 29
     if jour > jours_max:
-        return "Le mois {mois} de l'année {annee} n'a que {jours_max} jours."
+        print( "Le mois {mois} de l'année {annee} n'a que {jours_max} jours.")
 
 
 
