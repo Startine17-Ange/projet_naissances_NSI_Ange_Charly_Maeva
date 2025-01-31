@@ -8,8 +8,6 @@ def fonct_J(li_dates):
     # Nombre de jours par mois (pour une année non bissextile)
     jours_par_mois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-
-    
         # On découpe la chaîne( en format "jj/mm/aaaa")
         # Chaque partie (jour, mois, année) est convertie en nombre entier
         for date in li_dates:
@@ -17,12 +15,9 @@ def fonct_J(li_dates):
             jour = int(parties[0]) # Convertit le jour en entier
             mois = int(parties[1]) #    //      le mois   //
             annee = int(parties[2]) #    //     l'année    //
-
-
+          
     # Vérifie si l'année est bissextile
     bissextile = annee % 4 == 0 and  annee % 400 == 0
-
-
 
     # Vérifie le nombre de jours dans le mois
     jours_max = jours_par_mois[mois - 1]
@@ -30,13 +25,9 @@ def fonct_J(li_dates):
         jours_max = 29
     if jour > jours_max:
         print( "Le mois {mois} de l'année {annee} n'a que {jours_max} jours.")
-
-
-
-    # Calcul du nombre total de jours écoulés depuis le 1er janvier 2000
+  
+# Calcul du nombre total de jours écoulés depuis le 1er janvier 2000
     jours_totaux = 0
-
-
 
     # Ajouter les jours des années complètes entre 2000 et l'année précédente
     for i in range(2000, annee):
@@ -51,9 +42,6 @@ def fonct_J(li_dates):
         # Ajouter 1 jour pour février si l'année est bissextile
         if m == 1 and bissextile:
             jours_totaux += 1
-
-
-
 
     # Ajouter les jours du mois en cours
     jours_totaux += jour - 1
