@@ -17,17 +17,6 @@ def fonct_J(li_dates):
             jour = int(parties[0]) # Convertit le jour en entier
             mois = int(parties[1]) #    //      le mois   //
             annee = int(parties[2]) #    //     l'année    //
-     
-
-# Vérifications de base
-    if annee < 2000 or annee > 2010:
-        return "L'année doit être comprise entre 2000 et 2010."
-    if mois < 1 or mois > 12:
-        return "Le mois doit être entre 1 et 12."
-    if jour < 1 or jour > 31:
-        return "Le jour doit être entre 1 et 31."
-
-
 
 
     # Vérifie si l'année est bissextile
