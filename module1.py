@@ -17,7 +17,7 @@ def fonct_J(li_dates):
             annee = int(parties[2]) #    //     l'année    //
           
     # Vérifie si l'année est bissextile
-    bissextile = annee % 4 == 0 and  annee % 400 == 0
+    bissextile = annee % 4 == 0 
 
     # Vérifie le nombre de jours dans le mois
     jours_max = jours_par_mois[mois - 1]
@@ -31,7 +31,7 @@ def fonct_J(li_dates):
 
     # Ajouter les jours des années complètes entre 2000 et l'année précédente
     for i in range(2000, annee):
-         if i % 4 == 0 and  i % 400 == 0:
+         if i % 4 == 0 :
             jours_totaux = 366
          else:
             jours_totaux= 365
