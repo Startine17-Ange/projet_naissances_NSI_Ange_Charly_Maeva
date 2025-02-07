@@ -14,6 +14,6 @@ def extraire_fichier(ch_fichier):
         else :
             li_sexes.append(li_date_sexe[i])
 ##            li_sexes.remove('Sexe\n')
-    return li_dates
+    return li_dates, li_sexes
 
 ##et ne pas oublier ch_fichier.close()
