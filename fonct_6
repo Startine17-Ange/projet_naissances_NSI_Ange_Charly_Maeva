@@ -3,9 +3,15 @@ correspondant aux nombres de ces dates par distance avec la précédente pleine 
 La première valeur de la liste …[0] correspond donc au jour de la pleine lune et la dernière à la veille 
 de la pleine lune suivante '''
 
-def distance jour (li_dates):
+def distance jour (dico_dates_sexes):
   li_naissances_cycle_lune=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-  for date in li_dates:
-    jour apres pleine_lune(date):
-    li_naissance_cycle_lune[nbr_jours].append(1)
-  return li_naissances_cycle_lune
+  li_naissances_cycle_lune_fille=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  li_naissances_cycle_lune_garcon=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  for date, sexe in dico_dates_sexes:
+    jour_apres_pleine_lune(date):
+      li_naissance_cycle_lune[nbr_jours].append(1)
+      if sexe == "F" :
+        li_naissance_cycle_lune_fille[nbr_jours].append(1)
+        else:
+	        li_naissance_cycle_lune_garcon[nbr_jours].append(1)
+return li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissances_cycle_lune_garcon
