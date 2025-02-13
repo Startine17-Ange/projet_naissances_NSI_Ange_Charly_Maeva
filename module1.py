@@ -3,7 +3,7 @@
 def fonct_J(li_dates):
   
     # Liste des jours de la semaine
-    jours_semaines = ["Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
+    jours_semaines = [, "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi", "Dimanche"]
 
     # Nombre de jours par mois (pour une année non bissextile)
     jours_par_mois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
