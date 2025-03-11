@@ -19,6 +19,8 @@ def extraire_fichier(ch_fichier):
     return li_dates, li_sexes, dico_dates_sexes
 
 ##li_dates = ['15/09/2008', '04/11/2008', '07/04/2008', '28/10/2008', '20/05/2008', '10/03/2008', '27/10/2008', '26/05/2008', '26/07/2008', '21/01/2008', '16/02/2008', '09/08/2008', '21/11/2008', '15/01/2008', '28/10/2008', '02/07/2009', '21/09/2008', '27/02/2008', '12/02/2007', '29/02/2008', '02/02/2008', '05/08/2009', '23/02/2008', '11/03/2008', '05/02/2008']
+##dico_dates_sexes = {'02/02/2008': 'G\n','02/07/2009': 'G\n','04/11/2008': 'G\n','05/02/2008': 'F\n','05/08/2009': 'G\n','07/04/2008': 'F\n','09/08/2008': 'F\n','10/03/2008': 'F\n','11/03/2008': 'F\n','12/02/2007': 'G\n','15/01/2008': 'G\n','15/09/2008': 'G\n','16/02/2008': 'G\n', '20/05/2008': 'F\n','21/01/2008': 'G\n','21/09/2008': 'F\n','21/11/2008': 'F\n','23/02/2008': 'G\n','26/05/2008': 'G\n','26/07/2008': 'F\n','27/02/2008': 'G\n','27/10/2008': 'G\n','28/10/2008': 'F\n','29/02/2008': 'G\n'}
+
 
 def jour_apres_pleine_lune(ch_date):
     nbr_jours = 0
@@ -156,40 +158,56 @@ def jour_apres_pleine_lune(ch_date):
 
 
 def distance_jour_liste(li_dates):
-    li_naissances_cycle_lune = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    li_naissances_cycle_lune = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
     for date in li_dates:
         li_naissances_cycle_lune[jour_apres_pleine_lune(date)].append(1)
-        print(li_naissances_cycle_lune)
     return li_naissances_cycle_lune
 
 
 
 
 def distance_jour(dico_dates_sexes):
-    li_naissances_cycle_lune=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    li_naissances_cycle_lune_fille=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    li_naissances_cycle_lune_garcon=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    for date, sexe in dico_dates_sexes:
-        li_naissance_cycle_lune[nbr_jours].append(1)
+    li_naissances_cycle_lune=[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+    li_naissances_cycle_lune_fille=[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+    li_naissances_cycle_lune_garcon=[[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+    li_naissances_cycle_lune_turtle = []
+    li_naissances_cycle_lune_fille_turtle = []
+    li_naissances_cycle_lune_garcon_turtle = []
+    somme_tout = 0
+    for date, sexe in dico_dates_sexes.items():
+        li_naissances_cycle_lune[jour_apres_pleine_lune(date)].append(1)
         if sexe == "F\n" :
-            li_naissance_cycle_lune_fille[nbr_jours].append(1)
+            li_naissances_cycle_lune_fille[jour_apres_pleine_lune(date)].append(1)
         else:
-           li_naissance_cycle_lune_garcon[nbr_jours].append(1)
-    return li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissances_cycle_lune_garcon
+           li_naissances_cycle_lune_garcon[jour_apres_pleine_lune(date)].append(1)
+
+    for i in range (len(li_naissances_cycle_lune)):
+        somme_tout = len(li_naissances_cycle_lune[i])
+        li_naissances_cycle_lune_turtle.append(somme_tout)
+
+    for i in range (len(li_naissances_cycle_lune_fille)):
+        somme_tout = len(li_naissances_cycle_lune_fille[i])
+        li_naissances_cycle_lune_fille_turtle.append(somme_tout)
+
+    for i in range (len(li_naissances_cycle_lune_garcon)):
+        somme_tout = len(li_naissances_cycle_lune_garcon[i])
+        li_naissances_cycle_lune_garcon_turtle.append(somme_tout)
+
+    return li_naissances_cycle_lune_turtle, 'pause', li_naissances_cycle_lune_fille_turtle, 'pause', li_naissances_cycle_lune_garcon_turtle
 
 
 
 from turtle import *
 
-##exemple du résultat de la fonction 6-9
-##li_naissances_cycle_lune = [7,6,5,5,5,8,7,8,9,6,3,3,5,6,6,8,8,7,7,9,8,8,9,6,4,5,5,4,2, '.']
-##li_naissances_cycle_lune_fille = [8,6,5,5,5,8,7,8,9,6,3,3,5,6,6,8,8,7,7,9,8,8,9,6,4,5,5,4,2, '.']
-##li_naissances_cycle_lune_garcon = [9,6,5,5,5,8,7,8,9,6,3,3,5,6,6,8,8,7,7,9,8,8,9,6,4,5,5,4,2, '.']
-##à la place il faudra implanter les fonction, genre : fonction_6(li_dates)
+##résultat de la fonction 6-9
+##li_naissances_cycle_lune_turtle = [12,0,1,0,0,0,3,0,3,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1]
+##li_naissances_cycle_lune_fille_turtle = [5,0,0,0,0,0,1,0,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+##li_naissances_cycle_lune_garcon_turtle = [7,0,1,0,0,0,2,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0]
 
 
 
-def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissances_cycle_lune_garcon):
+
+def turtle(li_naissances_cycle_lune_turtle, li_naissances_cycle_lune_fille_turtle, li_naissances_cycle_lune_garcon_turtle):
 ##a mettre en full screen
 
     speed(30)
@@ -204,7 +222,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     begin_fill()
     circle(15)
     end_fill()
-    write(li_naissances_cycle_lune[0])
+    write(li_naissances_cycle_lune_turtle[0])
     penup()
     forward(40)
 
@@ -214,7 +232,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune[i+1])
+        write(li_naissances_cycle_lune_turtle[i+1])
         penup()
         forward(40)
 
@@ -224,7 +242,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     circle(15)
     end_fill()
     pencolor('white')
-    write(li_naissances_cycle_lune[i+14])
+    write(li_naissances_cycle_lune_turtle[i+14])
     pencolor('black')
     penup()
     forward(40)
@@ -235,7 +253,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune[i+16])
+        write(li_naissances_cycle_lune_turtle[i+16])
         penup()
         forward(40)
 
@@ -247,7 +265,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     begin_fill()
     circle(15)
     end_fill()
-    write(li_naissances_cycle_lune_fille[0])
+    write(li_naissances_cycle_lune_fille_turtle[0])
     penup()
     forward(40)
 
@@ -257,7 +275,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune_fille[i+1])
+        write(li_naissances_cycle_lune_fille_turtle[i+1])
         penup()
         forward(40)
 
@@ -267,7 +285,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     circle(15)
     end_fill()
     pencolor('white')
-    write(li_naissances_cycle_lune_fille[i+14])
+    write(li_naissances_cycle_lune_fille_turtle[i+14])
     pencolor('black')
     penup()
     forward(40)
@@ -278,7 +296,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune_fille[i+16])
+        write(li_naissances_cycle_lune_fille_turtle[i+16])
         penup()
         forward(40)
 
@@ -292,7 +310,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     begin_fill()
     circle(15)
     end_fill()
-    write(li_naissances_cycle_lune_garcon[0])
+    write(li_naissances_cycle_lune_garcon_turtle[0])
     penup()
     forward(40)
 
@@ -302,7 +320,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune_garcon[i+1])
+        write(li_naissances_cycle_lune_garcon_turtle[i+1])
         penup()
         forward(40)
 
@@ -312,7 +330,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
     circle(15)
     end_fill()
     pencolor('white')
-    write(li_naissances_cycle_lune_garcon[i+14])
+    write(li_naissances_cycle_lune_garcon_turtle[i+14])
     pencolor('black')
     penup()
     forward(40)
@@ -323,7 +341,7 @@ def turtle(li_naissances_cycle_lune, li_naissances_cycle_lune_fille, li_naissanc
         begin_fill()
         circle(15)
         end_fill()
-        write(li_naissances_cycle_lune_garcon[i+16])
+        write(li_naissances_cycle_lune_garcon_turtle[i+16])
         penup()
         forward(40)
     return None
