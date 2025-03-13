@@ -2,7 +2,7 @@
 
 def lire_dates_depuis_fichier(nom_fichier):
     liste_dates = []
-    with open(nom_fichier, 'r') as fichier:
+    fichier= open(nom_fichier, 'r')
         for ligne in fichier:
             ligne = ligne.strip()
             if ligne:
