@@ -7,7 +7,7 @@ def est_bissextile(annee: int) -> bool:
 def lire_dates_depuis_fichier(nom_fichier: str) -> list:
     """Lit un fichier contenant des dates et retourne une liste de dates"""
     li_dates = []
-    with open(nom_fichier, 'r') as fichier:
+    fichier= open(nom_fichier, 'r') 
         lignes = fichier.readlines()  # Lire toutes les lignes
     for ligne in lignes:
         ligne = ligne.strip()
