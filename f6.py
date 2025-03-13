@@ -1,24 +1,27 @@
 ﻿# Créé par charl, le 15/02/2025 en Python 3.7
 
 def lire_dates_depuis_fichier(nom_fichier):
+    ''' Ouvre un fichier, extrait des dates et les renvoie sous forme de liste de dates'''
     liste_dates = []
-    fichier= open(nom_fichier, 'r')
-        for ligne in fichier:
-            ligne = ligne.strip()
-            if ligne:
-                jour, mois, annee = ligne.split('/')
-                # Correction pour le format d'année à 2 chiffres
-                annee = 2000 + int(annee) if int(annee) < 100 else int(annee)
-                # Filtrer les dates entre 2000 et 2010
-                if 2000 <= annee <= 2010:
-                    liste_dates.append([int(jour), int(mois), annee])
+    fichier = open(nom_fichier, 'r')
 
-    # Vérification de ce qui est extrait
+    for ligne in fichier:
+        ligne = ligne.strip()
+        if ligne:
+            jour, mois, annee = ligne.split('/')
+            # Correction pour le format d'année à 2 chiffres
+            annee = 2000 + int(annee) if int(annee) < 100 else int(annee)
+            # Filtrer les dates entre 2000 et 2010
+            if 2000 <= annee <= 2010:
+                liste_dates.append([int(jour), int(mois), annee])
+
+    fichier.close()  # fermeture explicite du fichier
     print("Dates extraites : ", liste_dates)
     return liste_dates
 
 
 def jours_depuis_2000(date):
+    '''Prend une date, calcule le nombre de jours depuis le 1er janvier 2000 et renvoie un entier'''
     jour, mois, annee = date
     compteur_jours = 0
     jours_par_mois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -41,6 +44,7 @@ def jours_depuis_2000(date):
 
 
 def jour_de_la_semaine(date):
+    ''' Prend une date, calcule le jour de la semaine et renvoie une chaîne de caractères'''
     jour, mois, annee = date
     compteur_jours = 0
 
@@ -95,7 +99,7 @@ def trouver_phase_lunaire_naissance(date_de_naissance, dates_pleines_lunes):
 
 
 if __name__ == "__main__":
-    nom_fichier = "d:/NSI/project/date.txt"
+    nom_fichier = "N:/NSI/project/date.txt"
     dates_naissance = lire_dates_depuis_fichier(nom_fichier)
 
     dates_pleines_lunes = [(22, 12, 1999),
