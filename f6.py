@@ -1,5 +1,3 @@
-﻿# Créé par charl, le 15/02/2025 en Python 3.7
-
 def lire_dates_depuis_fichier(nom_fichier):
     ''' Ouvre un fichier, extrait des dates et les renvoie sous forme de liste de dates'''
     liste_dates = []
@@ -16,7 +14,7 @@ def lire_dates_depuis_fichier(nom_fichier):
                 liste_dates.append([int(jour), int(mois), annee])
 
     fichier.close()  # fermeture explicite du fichier
-    print("Dates extraites : ", liste_dates)
+    #print("Dates extraites : ", liste_dates)
     return liste_dates
 
 
@@ -84,14 +82,9 @@ def trouver_phase_lunaire_naissance(date_de_naissance, dates_pleines_lunes):
             apres = (jours_pleines_lunes[i], dates_pleines_lunes[i])
             avant = (jours_pleines_lunes[i-1], dates_pleines_lunes[i-1])
             break
-
-    # Si aucune pleine lune après, on prend la dernière pleine lune
-    if apres is None and len(jours_pleines_lunes) > 0:
-        apres = (jours_pleines_lunes[-1], dates_pleines_lunes[-1])
-
-    # Si aucune pleine lune avant, on prend la première pleine lune
-    if avant is None and len(jours_pleines_lunes) > 0:
-        avant = (jours_pleines_lunes[0], dates_pleines_lunes[0])
+# Si aucune pleine lune après ou avant, utiliser la première ou dernière pleine lune
+    apres = apres or (jours_pleines_lunes[-1], dates_pleines_lunes[-1])
+    avant = avant or (jours_pleines_lunes[0], dates_pleines_lunes[0])
 
     return avant, apres, jours_naissance
 
