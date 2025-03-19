@@ -109,12 +109,19 @@ if __name__ == "__main__":
                            (30, 1, 2010), (28, 2, 2010), (30, 3, 2010), (28, 4, 2010), (27, 5, 2010), (26, 6, 2010), (26, 7, 2010), (24, 8, 2010), (23, 9, 2010), (23, 10, 2010), (21, 11, 2010), (21, 12, 2010),
                            (19, 1, 2011)]
 
-for date_naissance in dates_naissance:
-    avant, apres, jours_naissance = trouver_phase_lunaire_naissance(date_naissance, dates_pleines_lunes)
-    print("Date de naissance: {} {}/{}/{}".format(jour_de_la_semaine(date_naissance), str(date_naissance[0]).zfill(2), str(date_naissance[1]).zfill(2), date_naissance[2]))
 
+for date_naissance in dates_naissance:
+    # Récupère les informations sur la phase lunaire
+    avant, apres, jours_naissance = trouver_phase_lunaire_naissance(date_naissance, dates_pleines_lunes)
+
+    # Affiche la date de naissance
+    print("Date de naissance: %s %d/%d/%d" % (jour_de_la_semaine(date_naissance),date_naissance[0],date_naissance[1],date_naissance[2]))
+
+    # Affiche la dernière pleine lune avant la naissance, si elle existe
     if avant:
-        print("Dernière pleine lune avant naissance: {}/{}/{} ({} jours avant)".format(str(avant[1][0]).zfill(2), str(avant[1][1]).zfill(2), avant[1][2], jours_naissance - avant[0]))
+        print("Dernière pleine lune avant naissance: %d/%d/%d (%d jours avant)" % (avant[1][0],avant[1][1],avant[1][2],jours_naissance - avant[0]))
+    # Affiche la première pleine lune après la naissance, si elle existe
     if apres:
-        print("Première pleine lune après naissance: {}/{}/{} ({} jours après)".format(str(apres[1][0]).zfill(2), str(apres[1][1]).zfill(2), apres[1][2], apres[0] - jours_naissance))
-    print()
+        print("Première pleine lune après naissance: %d/%d/%d (%d jours après)" % (apres[1][0],apres[1][1],apres[1][2],apres[0] - jours_naissance))
+    # Ligne vide pour séparer les résultats
+    print("")
